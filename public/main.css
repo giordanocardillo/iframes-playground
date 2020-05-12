@@ -1,0 +1,55 @@
+html,
+body {
+  font-family: sans-serif;
+  position: relative;
+}
+
+iframe {
+  border: 3px solid salmon;
+  min-height: 400px;
+  min-width: 600px;
+}
+
+body {
+  border: 3px solid cornflowerblue;
+  padding: 15px;
+  margin: 10px;
+}
+
+pre#message {
+  border: 3px solid grey;
+  padding: 15px;
+}
+
+.legend {
+  border: 1px solid #ccc;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: #fff;
+  padding: 5px;
+  font-size: 12px;
+  line-height: 15px;
+  vertical-align: middle
+}
+
+.legend .title {
+  font-weight: bold;
+}
+
+.legend .iframe-indicator, 
+.legend .main-indicator {
+  height: 15px;
+  width: 15px;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.legend .iframe-indicator {
+  background-color: salmon;
+  margin-top: 15px;
+}
+
+.legend .main-indicator {
+  background-color: cornflowerblue;
+}

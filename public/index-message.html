@@ -1,0 +1,36 @@
+<html>
+
+<head>
+  <style>
+    html,
+    body {
+      font-family: sans-serif;
+    }
+
+    pre#message {
+      border: 3px solid grey;
+      padding: 15px;
+    }
+
+  </style>
+</head>
+
+<body>
+  <h2>Let's chat!</h2>
+  <pre id="message">No messages received</pre>
+  <button id="message-button">Send a message to main window</button>
+</body>
+<script>
+  document.getElementById('message-button').onclick = () => {
+    window.parent.postMessage({ from: 'iframe' }, '*')
+  }
+  const messageHandler = (message) => {
+    const messageElement = document.getElementById('message')
+    messageElement.innerText = `Latest Message \nTimestamp: ${message.timeStamp}\nReceived From ${message.origin}\nData:\n\n${JSON.stringify(message.data, null, 2)}\n\n`
+    console.dir(message)
+  }
+
+  window.addEventListener('message', messageHandler)
+</script>
+
+</html>

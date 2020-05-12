@@ -1,0 +1,36 @@
+<html>
+
+<head>
+  <link rel="stylesheet" href="main.css" />
+</head>
+
+<body>
+  <div class="legend">
+    <span class="title">Legend</span>
+    <div>
+      <span class="iframe-indicator"></span> iframe
+    </div>
+    <div>
+      <span class="main-indicator"></span> Main page
+    </div>
+  </div>
+  <iframe id="iframe" src="http://localhost:4000/index-message.html" frameborder="0"></iframe>
+  <br />
+  <pre id="message">No messages received</pre>
+  <button id="message-button">Send message to iframe</button>
+  <script>
+    document.getElementById('message-button').onclick = () => {
+      document.getElementById('iframe').contentWindow.postMessage({ from: 'main window' }, '*')
+    }
+
+    const messageHandler = (message) => {
+      const messageElement = document.getElementById('message')
+      messageElement.innerText = `Latest Message \nTimestamp: ${message.timeStamp}\nReceived From ${message.origin}\nData:\n\n${JSON.stringify(message.data, null, 2)}\n\n`
+      console.dir(message)
+    }
+
+    window.addEventListener('message', messageHandler)
+  </script>
+</body>
+
+</html>
